@@ -99,7 +99,6 @@ def native_method(func):
 
         if args_count < 0:
             raise RuntimeError("NativeMethod accept at least (self, mu) or (mu).")
-
         native_args = native_read_args(mu, args_count)
 
         if len(argv) == 1:

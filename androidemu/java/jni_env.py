@@ -1582,8 +1582,13 @@ class JNIEnv:
         return idx
 
     @native_method
-    def get_string_utf_length(self, mu, env):
-        raise NotImplementedError()
+    def get_string_utf_length(self, mu, env, string):   ##added by zhangyan
+        logger.debug("JNIEnv->GetStringUtfLength(%u) was called" % (string))
+        str_ref = self.get_reference(string)
+        str_obj = str_ref.value
+        data = str_obj.get_py_string()
+        return len(data)
+    #    raise NotImplementedError()
     #
 
     @native_method
